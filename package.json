@@ -2,7 +2,8 @@
   "name": "discord",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "start": "node build/sample/register.js"
   },
   "dependencies": {
     "fastify": "4.5.2",
