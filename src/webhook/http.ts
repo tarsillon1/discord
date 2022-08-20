@@ -18,8 +18,11 @@ export const listen = async ({ caller, port, publicKey }: ListenConfig) => {
 
   const withVerifier = middleware.makeVerifier(publicKey);
   const handleInteraction = handlers.makeInteractionHandler(caller);
+  server.get("/health", (_, res) => res.status(200).send("OK"));
   server.post("/", withVerifier(handleInteraction));
 
+  console.log("listen", port);
   await server.listen({ port });
+  console.log("good to go");
   return { close: server.close.bind(server) as () => Promise<void> };
 };
