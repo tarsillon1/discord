@@ -12,6 +12,7 @@ export const webhook = (config: WebhookClientConfig): WebhookClient => {
   const registry = makeWebhookRegistry();
   const httpPromise = http.listen({
     port: config.port || 8080,
+    host: config.host || "0.0.0.0",
     publicKey: config.publicKey,
     caller: registry,
   });

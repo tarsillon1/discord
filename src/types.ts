@@ -30,6 +30,11 @@ export interface WebhookClientConfig {
   port?: number;
 
   /**
+   * The host for the Webhook HTTP server. Defaults to 0.0.0.0.
+   */
+  host?: string;
+
+  /**
    * The public key of the discord application.
    */
   publicKey: string;
