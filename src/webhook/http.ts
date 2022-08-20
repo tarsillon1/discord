@@ -21,6 +21,7 @@ export const listen = async ({ caller, port, host, publicKey }: ListenConfig) =>
   const handleInteraction = handlers.makeInteractionHandler(caller);
   server.get("/health", (_, res) => res.status(200).send("OK"));
   server.post("/", withVerifier(handleInteraction));
+  server.setErrorHandler(handlers.handleError);
 
   await server.listen({ port, host });
   return { close: server.close.bind(server) as () => Promise<void> };

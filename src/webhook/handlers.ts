@@ -1,5 +1,5 @@
 import type { WebhookCaller } from "./registry";
-import type { RouteHandler } from "fastify";
+import type { FastifyReply, FastifyRequest, RouteHandler } from "fastify";
 
 import snakeCase from "lodash.snakecase";
 import camelCase from "lodash.camelcase";
@@ -30,3 +30,8 @@ export const makeInteractionHandler =
     }
     return res.status(200).send({ type: InteractionCallback.Pong });
   };
+
+export const handleError = (err: Error, _: FastifyRequest, res: FastifyReply) => {
+  console.error("internal server error: ", err);
+  return res.status(500).send("internal server error");
+};
