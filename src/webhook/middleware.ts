@@ -6,23 +6,23 @@ export const makeVerifier =
   (publicKey: string) =>
   (next: RouteHandler): RouteHandler =>
     function (req, res) {
-      const signature = req.headers["X-Signature-Ed25519"] as string;
-      const timestamp = req.headers["X-Signature-Timestamp"] as string;
+      const signature = req.headers["x-signature-ed25519"] as string;
+      const timestamp = req.headers["x-signature-timestamp"] as string;
       const body = req.rawBody;
 
       if (!body) {
         const err = "body is required";
-        console.error(err);
+        console.warn(err);
         return res.status(400).send(err);
       }
       if (!timestamp) {
         const err = "timestamp is required";
-        console.error(err);
+        console.warn(err);
         return res.status(400).send(err);
       }
       if (!signature) {
         const err = "signature is required";
-        console.error(err);
+        console.warn(err);
         return res.status(400).send(err);
       }
 
