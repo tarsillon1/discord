@@ -2,7 +2,7 @@ import type { RouteHandler } from "fastify";
 
 import * as nacl from "tweetnacl";
 
-export const makeVerification =
+export const makeVerifier =
   (publicKey: string) =>
   (next: RouteHandler): RouteHandler =>
     function (req, res) {
