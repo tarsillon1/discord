@@ -11,17 +11,17 @@ export const makeVerifier =
       const body = req.rawBody;
 
       if (!body) {
-        const err = "body is required";
+        const err = "bad request: body is required";
         console.warn(err);
         return res.status(400).send(err);
       }
       if (!timestamp) {
-        const err = "timestamp is required";
+        const err = "bad request: timestamp is required";
         console.warn(err);
         return res.status(400).send(err);
       }
       if (!signature) {
-        const err = "signature is required";
+        const err = "bad request: signature is required";
         console.warn(err);
         return res.status(400).send(err);
       }
@@ -33,7 +33,9 @@ export const makeVerifier =
       );
 
       if (!isVerified) {
-        return res.status(401).send("invalid request signature");
+        const err = "forbidden: invalid request signature";
+        console.warn(err);
+        return res.status(401).send(err);
       }
       return next.bind(this)(req, res);
     };
