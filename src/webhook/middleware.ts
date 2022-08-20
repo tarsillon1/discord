@@ -11,13 +11,19 @@ export const makeVerifier =
       const body = req.rawBody;
 
       if (!body) {
-        return res.status(400).send("body is required");
+        const err = "body is required";
+        console.error(err);
+        return res.status(400).send(err);
       }
       if (!timestamp) {
-        return res.status(400).send("timestamp is required");
+        const err = "timestamp is required";
+        console.error(err);
+        return res.status(400).send(err);
       }
       if (!signature) {
-        return res.status(400).send("signature is required");
+        const err = "signature is required";
+        console.error(err);
+        return res.status(400).send(err);
       }
 
       const isVerified = nacl.sign.detached.verify(
