@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  PublicKey:
+    Type: String
+
+Resources:
+  DiscordFunc:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./build
+      Handler: index.handler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          PUBLIC_KEY: !Ref PublicKey
+      Events:
+        Discord:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post

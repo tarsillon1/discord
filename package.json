@@ -1,13 +1,13 @@
 {
   "name": "discord",
+  "version": "1.0.1",
+  "main": "./src/index.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
     "start": "node build/sample/register.js"
   },
   "dependencies": {
-    "fastify": "4.5.2",
-    "fastify-raw-body": "4.0.0",
     "lodash.snakecase": "4.1.1",
     "lodash.camelcase": "4.3.0",
     "tweetnacl": "1.0.3"
