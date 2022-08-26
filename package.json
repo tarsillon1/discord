@@ -1,7 +1,5 @@
 {
   "name": "discord",
-  "version": "1.0.1",
-  "main": "./src/index.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest",
